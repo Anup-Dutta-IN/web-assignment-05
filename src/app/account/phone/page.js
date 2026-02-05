@@ -14,7 +14,7 @@ export default function AccountPage() {
   useEffect(() => {
     const storedUsername = localStorage.getItem("assignment.onetan.in.Username");
     const storedPassword = localStorage.getItem("assignment.onetan.in.Password");
-    
+
     if (storedUsername) setVerifyUsername(storedUsername);
     if (storedPassword) setVerifyPassword(storedPassword);
   }, []);
@@ -63,16 +63,18 @@ export default function AccountPage() {
   };
 
   return (
-    <MainLayout>
+    <>
       {/* FORM JUST BELOW HEADER */}
       <section className="bg-white px-8 pt-55 pb-20 relative min-h-screen">
         <h2 className="text-2xl font-bold mb-6">Verify Account</h2>
+
         <form onSubmit={handleVerify} className="w-full">
           {error && (
             <p className="text-red-600 text-sm mb-3 text-center bg-red-50 p-2 rounded">
               {error}
             </p>
           )}
+
           <input
             type="text"
             placeholder="Username"
@@ -80,6 +82,7 @@ export default function AccountPage() {
             onChange={(e) => setVerifyUsername(e.target.value)}
             className="w-full p-3 border rounded mb-4"
           />
+
           <input
             type="password"
             placeholder="Password"
@@ -108,7 +111,7 @@ export default function AccountPage() {
           </button>
         </form>
 
-        {/* Clear Cache Button - Bottom Right */}
+        {/* Clear Cache Button */}
         <div className="mt-10 w-full flex justify-center">
           <button
             type="button"
@@ -119,6 +122,6 @@ export default function AccountPage() {
           </button>
         </div>
       </section>
-    </MainLayout>
+    </>
   );
 }
